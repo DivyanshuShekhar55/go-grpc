@@ -1,12 +1,29 @@
 syntax = "proto3";
 
-message CreateOrderRequest{
+message CreateOrderRequest {
     int32 customerID = 1;
     int32 productID  = 2;
     int32 quantity = 3;
 }
 
-message CreateOrderResponse{
+message CreateOrderResponse {
     string status = 1;
 }
+
+message GetOrderRequest {
+    int32 customerID = 1;
+}
+
+message Order{
+    int32 OrderID = 1;
+    int32 CustomerId = 2;
+    int32 ProductID = 3;
+    int32 Quantity = 4;
+}
+
+message GetOrderResponse {
+    repeated Order orders = 1;
+    // this is going to be a slice/array (hence repeated) of orders ... each of type Order
+}
+
 
