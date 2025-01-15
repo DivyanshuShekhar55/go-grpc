@@ -26,4 +26,10 @@ message GetOrderResponse {
     // this is going to be a slice/array (hence repeated) of orders ... each of type Order
 }
 
+service OrderService {
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+
+    // basically this defines then func signature
+    // takes inoput of type OrderResquest, and sends output of type OrderResponse
+}
 
