@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "github.com/DivyanshuShekhar55/go-grpc/services/common/orders";
+
 message CreateOrderRequest {
     int32 customerID = 1;
     int32 productID  = 2;
