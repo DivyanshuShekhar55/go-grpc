@@ -22,3 +22,8 @@ func (s *OrderService) CreateOrder(ctx context.Context, order *orders.Order) err
 	ordersDB = append(ordersDB, order)
 	return nil
 }
+
+// create the GetOrders Business implementation
+func (s *OrderService) GetOrders(ctx context.Context) []*orders.Order {
+	return ordersDB
+}
