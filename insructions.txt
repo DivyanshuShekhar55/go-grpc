@@ -1,6 +1,7 @@
--what we are basically doing in this code is this : we create a grpc service over a HTTP protocol
--so there will be a server and a client the order is service and kitchen is client
--we can create grpc over any protocol, even websockets  for two-way data sharing
+-what we are basically doing in this code is this : we create a grpc service 
+-this connects the order and the kitchen services
+-remember that grpc is used mainly over communication between services only, for web use json
+-grpc is a duplex connection, (just like websocket, but not real time)
 
 
 to auto create the files run in terminal :
