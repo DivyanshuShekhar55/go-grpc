@@ -10,7 +10,7 @@ import (
 var ordersDB = make([]*orders.Order, 0)
 
 type OrderService struct {
-	// store implementation
+	// store implementation, see more inside the internal/store folder of the go-rss repo to understand what is a store
 }
 
 func NewOrderService() *OrderService {
