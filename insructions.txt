@@ -24,3 +24,18 @@ protoc `
 -there can be multiple services, and all services can have multiple methods -- here we have ordersService, and it has 2 methods : get and create orders
 -the services/orders/service/orders.go is the SERVICE LAYER, which defines these methods and also interacts with the db. Note that handlers (TRANSPORT LAYER) can be split into http or grpc, but there will only be one service layer which will interact with the DB. Whether req is from http or grpc, it will be this service only which updates the db.
 -the TRANSPORT LAYER of the grpc is defined in services/orders/handler/grpc.go
+
+
+- The client side of grpc, flow of thoughts : 
+HTTP Request → HTTP Server → gRPC Client → gRPC Server → OrdersGrpcHandler → OrdersService
+    ↑            (kitchen/http.go)     (http.go)    (orders/grpc.go)      (handler/grpc.go)     (service)
+User Request
+
+-look at the client server code ... kitchen/http.go it calls the /orders route and sends some data
+-the grpc all does is makes a connection to gRPC service server and converts the go data to a protobuf
+-then handler/http.go listens for the requests to /orders, it gets the data from the protobuf (note that it culd have been a python file or any file but it would have simply got the req data), using the functions defined in the auto-generated files like req.GetProductID, etc
+-then the handler sends this data to handler/grpc.go by calling the CreateOrder function
+-the CreateOrder function in handler/grpc.go calls the service layer service/orders.go, which puts the data in the database
+- if no error, control returns back to the handler/grpc.go, which then returns a Response in the protobuf format again
+-after the response is returned, the control goes back to kitchen/http.go
+-the response is converted in between by the gRPC to code readable by the client side, the client side then shows the response to client/user
