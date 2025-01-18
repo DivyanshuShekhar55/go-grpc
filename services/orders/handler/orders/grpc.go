@@ -35,6 +35,7 @@ func NewGrpcOrdersService(grpc *grpc.Server, ordersService types.OrderService) {
 func (h *OrdersGrpcHandler) CreateOrder(ctx context.Context, req *orders.CreateOrderRequest) (*orders.CreateOrderResponse, error) {
 
 	// create a mock order request
+	// note that we will be getting
 	order := &orders.Order{
 		OrderID:    42,
 		CustomerId: 2,

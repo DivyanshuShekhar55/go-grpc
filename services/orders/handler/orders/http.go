@@ -37,7 +37,7 @@ func (h *OrdersHttpHandler) CreateOrder(w http.ResponseWriter, r *http.Request) 
 
 	// create a mock order ...
 	// in the proto file we created a structure that had customerid, productid, quantity
-	// in protofile generated we have methods to get these fields from the req, orders.pb.go line 60
+	// in protofile generated we have methods to get these fields from the req, orders.pb.go line 60 ... the req is coming from kitchen/http.go
 	order := &orders.Order{
 		OrderID:    42,
 		CustomerId: req.GetCustomerID(),
