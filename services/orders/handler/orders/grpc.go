@@ -9,7 +9,7 @@ import (
 )
 
 type OrdersGrpcHandler struct {
-	// the orderService is an interface, so basically saying our handler will have this, this and those functions
+	// the types.OrderService is an interface, so basically saying our handler will have this, this and those methods/func
 	ordersService types.OrderService
 
 	// this is the fallback or default created in auto-generation code
